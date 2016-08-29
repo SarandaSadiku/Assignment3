@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Coding Dojo contact page</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			$('form').submit(function(){
+				var first=$('#first_name').val();
+				var last=$('#last_name').val();
+				var description=$('.description').val();
+				var fullname= first+" "+last;
+				var newContact="<div class='newContact'><h2>"+fullname+"</h2><p>Click for description!</p></div>"
+				$('#right_content').append(newContact);
+				$('.newContact').css({  "border-color": "black", 
+							            "border-weight":"2px", 
+							            "border-style":"solid",
+							            "text-align":"center",
+							            "margin-top":"20px",
+							            "padding":"20p"
+							        });
+				return false;
+			})
+
+			$(document).on('click','.newContact', function(){
+				$(this).parent().text($('.description').val());
+
+			})
+		});
+</script>
+	
+</head>
+<body>
+<div id="wrapper">
+	<form action="#" id="left_content" >
+		First Name:<input type="text" id="first_name" name="first_name"><br><br>
+		Last Name:<input type="text" id="last_name" name="last_name"><br>
+		
+		<h6>Description:</h6>
+		<textarea  class="description" rows="6" cols="33" name="coment" form="usrform" placeholder="Enter description:"></textarea><br>
+		<input class="add_user" type="submit" value="Add User">
+		</form>
+		<div id="right_content">
+		</div>
+	
+</div> <!-- end of wrapper -->
+</body>
+</html>
